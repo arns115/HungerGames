@@ -1,7 +1,6 @@
 package distritos.clases_distritos;
 
 import distritos.Distrito;
-import participantes.Persona;
 
 public class Distrito3 implements Distrito{
     public void mostrarInformacionDistrito(){
@@ -10,6 +9,14 @@ public class Distrito3 implements Distrito{
         "La mayoría de sus habitantes trabajan en las fábricas y son muy hábiles con la ingeniería."+
         " Algunas personas piensan que el Distrito 3 es débil, pero su inteligencia proporciona muchos beneficios."+
         " Sus tributos tienden a usar esto para su ventaja.");
+    }
+
+    public int maxSaludDistrito(){
+        return 100;
+    }
+
+    public int maxStaminaDistrito(){
+        return 90;
     }
 
     public double modificadorFuerza() {
@@ -28,7 +35,5 @@ public class Distrito3 implements Distrito{
         return 1.1;
     }
 
-    public Persona seleccionarPersona(){
-        
-    }
+
 }

@@ -1,7 +1,5 @@
 package distritos;
 
-import participantes.*;
-
 public interface Distrito {
     /**
      * Se imprime la informacion del distrito que llame al metodo
@@ -44,10 +42,5 @@ public interface Distrito {
      */
     public double modificadorVelocidad();
 
-    /**
-     * Selecciona a una persona al azar de la lista de personas del distrito 
-     * @return double
-     */
-    public Tributo seleccionarPersona();
 
 }

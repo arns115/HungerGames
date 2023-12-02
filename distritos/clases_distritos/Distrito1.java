@@ -38,7 +38,4 @@ public class Distrito1 implements Distrito{
         return 1.5;
     }
 
-    public Tributo seleccionarPersona(){
-
-    }
 }

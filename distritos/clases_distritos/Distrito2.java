@@ -1,7 +1,6 @@
 package distritos.clases_distritos;
 
 import distritos.Distrito;
-import participantes.Persona;
 
 public class Distrito2 implements Distrito{
     public void mostrarInformacionDistrito(){
@@ -40,7 +39,5 @@ public class Distrito2 implements Distrito{
         return 1.5;
     }
 
-    public Persona seleccionarPersona(){
-        
-    }
+
 }
