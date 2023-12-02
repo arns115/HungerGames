@@ -1,7 +1,9 @@
 package participantes;
 
 public class Estadisticas {
+    private int maxSalud;
     private int salud;
+    private int maxStamina;
     private int stamina;
     private int inteligencia;
     private int fuerza;
@@ -12,12 +14,23 @@ public class Estadisticas {
      * Constructor de la clase. Inicializa todos los atributos a un valor random entre 0 y 100.
      */
     public Estadisticas(int maxHealth, int maxStamina, double modifFuerza, double modifDestreza, double modifInteligencia, double modifVelocidad){
+        this.maxSalud=maxHealth;
         this.salud=maxHealth;
+        this.maxStamina=maxStamina;
         this.stamina=maxStamina;
         this.inteligencia=(int)(Math.random()*100*modifFuerza);
         this.velocidad=(int)(Math.random()*100*modifDestreza);
         this.destreza=(int)(Math.random()*100*modifInteligencia);
         this.fuerza=(int)(Math.random()*100*modifVelocidad);
+    }
+
+
+    /**
+     * Getter de salud maxima
+     * @return int
+     */
+    public int getMaxSalud() {
+        return maxSalud;
     }
 
     /**
@@ -26,6 +39,14 @@ public class Estadisticas {
      */
     public int getSalud() {
         return salud;
+    }
+
+    /**
+     * Getter de stamina maxima
+     * @return int
+     */
+    public int getMaxStamina() {
+        return maxStamina;
     }
 
     /**
@@ -123,11 +144,11 @@ public class Estadisticas {
      * Metodo toString para imprimir las estadisticas de las peronas
      */
     public String toString() {
-        return "Salud: "+getSalud()+
-        "\nStamina: "+getStamina() + 
-        "\nFuerza: "+getFuerza()+
-        "\nDestreza: "+getDestreza() + 
-        "\nInteligencia: "+getInteligencia()+ 
-        "\nVelocidad: "+getVelocidad()+"\n";
+        return "Salud: "+getSalud() +"/"+ getMaxSalud()+"\n"+
+        "Stamina: "+getStamina() +"/"+ getMaxStamina()+"\n"+
+        "Fuerza: "+getFuerza()+"\n"+
+        "Destreza: "+getDestreza() +"\n"+
+        "Inteligencia: "+getInteligencia()+"\n"+
+        "Velocidad: "+getVelocidad();
     }
 }

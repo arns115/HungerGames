@@ -15,12 +15,21 @@ public class Distrito2 implements Distrito{
         "agentes de la paz para el ejército del Capitolio. ");
     }
 
+    
+    public int maxSaludDistrito(){
+        return 200;
+    }
+
+    public int maxStaminaDistrito(){
+        return 200;
+    }
+
     public double modificadorFuerza() {
         return 1.6;
     }
 
     public double modificadorInteligencia() {
-        return 1.2;
+        return 1.0;
     }
 
     public double modificadorDestreza() {

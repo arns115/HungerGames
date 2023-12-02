@@ -14,6 +14,14 @@ public class Distrito1 implements Distrito{
         "tributos profesionales en los juegos del hambre. ");
     }
 
+    public int maxSaludDistrito(){
+        return 150;
+    }
+
+    public int maxStaminaDistrito(){
+        return 150;
+    }
+
     public double modificadorFuerza() {
         return 1.5;
     }
@@ -30,7 +38,7 @@ public class Distrito1 implements Distrito{
         return 1.5;
     }
 
-    public Persona seleccionarPersona(){
-        
+    public Tributo seleccionarPersona(){
+
     }
 }
