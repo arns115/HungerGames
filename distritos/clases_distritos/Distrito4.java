@@ -6,10 +6,9 @@ import participantes.Persona;
 public class Distrito4 implements Distrito{
     public void mostrarInformacionDistrito(){
         System.out.println("Distrito 4\n########################");
-        System.out.println("El Distrito 3 se especializa en la tecnología y la electrónica. "+
-        "La mayoría de sus habitantes trabajan en las fábricas y son muy hábiles con la ingeniería."+
-        " Algunas personas piensan que el Distrito 3 es débil, pero su inteligencia proporciona muchos beneficios."+
-        " Sus tributos tienden a usar esto para su ventaja.");
+        System.out.println("El Distrito 4 se espcialiiza en la pesca y la natación. "+
+        "Se dice que el Distrito 4 tiene a la gente de más \"decente\" aspecto." +
+        " Su pan es salado, pan con forma de pez de color verde debido a la utilización de algas para su producción." );
     }
 
     public double modificadorFuerza() {
