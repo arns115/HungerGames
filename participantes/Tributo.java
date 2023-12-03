@@ -91,7 +91,7 @@ public class Tributo extends Persona{
      * Metodo para conocer si un tributo en especifico esta vivo
      * @return boolean
      */
-    private boolean vivo(){
+    public boolean vivo(){
         return (getEstadisticas().getSalud()>0);
     }
 
@@ -115,7 +115,7 @@ public class Tributo extends Persona{
         if (poderUsarArma()){
             tributoAAtacar.getEstadisticas().setSalud(tributoAAtacar.getEstadisticas().getSalud()-arma.hacerDano(estadisticas.getFuerza()
             , estadisticas.getDestreza(), estadisticas.getInteligencia(), estadisticas.getVelocidad()));
-            
+
             estadisticas.setStamina(estadisticas.getStamina()-arma.getRequerimientoStamina());
             return true;
         }
