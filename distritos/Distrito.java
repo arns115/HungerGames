@@ -1,12 +1,23 @@
 package distritos;
 
-import participantes.*;
-
 public interface Distrito {
     /**
      * Se imprime la informacion del distrito que llame al metodo
      */
     public void mostrarInformacionDistrito();
+
+    /**
+     * Devuelve numero de hombres en el distrito
+     * @return int
+     */
+    public int getNumHombres();
+
+    /**
+     * Devuelve numero de mujeres en el distrito
+     * @return int
+     */
+    public int getNumMujeres();
+
 
     /**
      * Maxima salud del distrito 
@@ -44,10 +55,5 @@ public interface Distrito {
      */
     public double modificadorVelocidad();
 
-    /**
-     * Selecciona a una persona al azar de la lista de personas del distrito 
-     * @return double
-     */
-    public Tributo seleccionarPersona();
 
 }

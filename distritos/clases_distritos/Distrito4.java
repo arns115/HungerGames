@@ -27,7 +27,4 @@ public class Distrito4 implements Distrito{
         return 1.1;
     }
 
-    public Persona seleccionarPersona(){
-        
-    }
 }
