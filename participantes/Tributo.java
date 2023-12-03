@@ -11,6 +11,7 @@ public class Tributo extends Persona{
      * @param apellido String
      * @param edad int
      * @param estatura double
+     * @param distrito int
      * @param maxHealth int
      * @param maxStamina int
      * @param modifFuerza double
@@ -18,7 +19,7 @@ public class Tributo extends Persona{
      * @param modifInteligencia double
      * @param modifVelocidad double
      */
-    public Tributo(String nombre, String apellido, int edad, int distrito, double estatura, int maxHealth, int maxStamina, double modifFuerza, double modifDestreza, double modifInteligencia, double modifVelocidad){
+    public Tributo(String nombre, String apellido, int edad, double estatura, int distrito, int maxHealth, int maxStamina, double modifFuerza, double modifDestreza, double modifInteligencia, double modifVelocidad){
         super(nombre, apellido, edad);
         this.distrito=distrito;
         this.estatura=estatura;

@@ -7,6 +7,19 @@ public interface Distrito {
     public void mostrarInformacionDistrito();
 
     /**
+     * Devuelve numero de hombres en el distrito
+     * @return int
+     */
+    public int getNumHombres();
+
+    /**
+     * Devuelve numero de mujeres en el distrito
+     * @return int
+     */
+    public int getNumMujeres();
+
+
+    /**
      * Maxima salud del distrito 
      * @return int
      */
