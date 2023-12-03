@@ -3,7 +3,6 @@ package principal;
 import participantes.*;
 
 import java.io.*;
-import java.util.Scanner;
 
 import distritos.*;
 
@@ -29,7 +28,11 @@ public class Cosecha {
                 String []a=line.split(",");
                 tributo=new Tributo(a[0], a[1], Integer.valueOf(a[2]), Double.valueOf(a[3]), Integer.valueOf(num), distrito.maxSaludDistrito(), distrito.maxStaminaDistrito()
                 ,distrito.modificadorFuerza(), distrito.modificadorDestreza(), distrito.modificadorInteligencia(), distrito.modificadorVelocidad());
+
+                br.close();
+
                 return tributo;
+
             } catch(EOFException e1){
                 e1.printStackTrace();
                 return null;
@@ -41,4 +44,5 @@ public class Cosecha {
         }
     }
     
+
 }
