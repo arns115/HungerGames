@@ -5,7 +5,6 @@ import armas.Arma;
 public class cuchillo_lanzable extends Arma{
 
     public cuchillo_lanzable(){
-        super(50,40,80,20,40,10);
-        this.material=material;
+        super(50,40,80,20,40,10);;
     }
 }

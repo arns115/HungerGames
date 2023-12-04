@@ -4,7 +4,7 @@ import participantes.*;
 
 import java.io.*;
 
-import distritos.*;
+import distritos.clases_distritos.*;
 
 public class Cosecha {
     

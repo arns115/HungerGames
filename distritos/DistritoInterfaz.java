@@ -1,6 +1,13 @@
 package distritos;
 
-public interface Distrito {
+public interface DistritoInterfaz {
+
+    /**
+     * Se devuelve el numero del distrito
+     * @return int
+     */    
+    public int getNumDistrito();
+
     /**
      * Se imprime la informacion del distrito que llame al metodo
      */
