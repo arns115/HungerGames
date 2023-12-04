@@ -3,6 +3,8 @@ package principal;
 import java.util.Scanner; 
 import java.io.*;
 import distritos.clases_distritos.Distrito;
+import interfaz_grafica.juego;
+import interfaz_grafica.pantalla_principal;
 import usuarios.*;
 
 public class Principal {
@@ -10,6 +12,7 @@ public class Principal {
         System.out.println("1) Avanzar un dia 2)Mostrar tributos vivos 3) Modificar el juego(opcion para admins)");
     }
     public static void main(String [] args){
+        pantalla_principal pant_prin = new pantalla_principal();
         InstanciarDistritos.inicializarDistritos();
         Scanner sc=new Scanner(System.in);
         String usuario;
@@ -18,13 +21,21 @@ public class Principal {
         System.out.println("Bienvenido a los juegos del hambre\n");
         System.out.println("Ingrese usuario y contrasena");
         while(user==0){
+            /*
+            
             usuario=sc.nextLine();
             contrasena=sc.nextLine();
             user=RevisarUsers.verificarUsuario(usuario, contrasena); 
             if(user==0){
                 System.out.println("Usuario no existe, vuelva a intentarlo");
             }
+            */
+            user = pant_prin.verificator;
+            System.out.print(user);
         }
+        juego jug = new juego(user);
+        jug.setVisible(true);
+        pant_prin.setVisible(false);
         if(user==1){
             System.out.println("Bienvenido-   Ha ingresado como usuario-");
         }

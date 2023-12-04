@@ -46,8 +46,8 @@ public class Facade {
         //Imprime la informacion de los distritos junto a las personas que se han seleccionado
         for (Distrito dist: listaDistritos){
             System.out.println(dist.toString());
-            TributosVivos.add(Cosecha.seleccionarPersona(dist, dist.getNumDistrito(), "hombre"));
-            TributosVivos.add(Cosecha.seleccionarPersona(dist, dist.getNumDistrito(), "mujer"));
+            TributosVivos.add(Cosecha.seleccionarPersona(dist, dist.getNumDistrito(), "hombres"));
+            TributosVivos.add(Cosecha.seleccionarPersona(dist, dist.getNumDistrito(), "mujeres"));
         }
 
         //Se anaden las armas a la lista de armas

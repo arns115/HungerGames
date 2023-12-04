@@ -6,7 +6,7 @@ import distritos.clases_distritos.*;
 public class InstanciarDistritos {
     public static void inicializarDistritos(){
         try{
-            ObjectOutputStream f= new ObjectOutputStream(new FileOutputStream("objetosDistritos.sav"));
+            ObjectOutputStream f = new ObjectOutputStream(new FileOutputStream("objetosDistritos.sav"));
 
             Distrito distrito1=new Distrito(1,"Distrito 1\n########################\n"+
             "El Distrito 1 se especializa en productos de lujo (artículos de lujo como joyas)."+

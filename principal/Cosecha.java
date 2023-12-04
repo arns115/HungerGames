@@ -11,7 +11,7 @@ public class Cosecha {
     public static Tributo seleccionarPersona(Distrito distrito, Integer num, String HombresOMujeres){
         Tributo tributo=new Tributo("", "", 0, 0, 0, 0, 0, 0, 0, 0);
         try{
-            BufferedReader br = new BufferedReader(new FileReader("distritos/personas_distritos/"+num.toString()+"/"+HombresOMujeres+num.toString())); 
+            BufferedReader br = new BufferedReader(new FileReader("distritos/personas_distritos/"+num.toString()+"/"+HombresOMujeres+num.toString()+".csv")); 
             String line="";
             int maxNum;
             if(HombresOMujeres.equals("hombre")){

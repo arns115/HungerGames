@@ -10,29 +10,37 @@ public class RevisarUsers {
         FileReader fr = null;
         BufferedReader br = null;
         try {
-            archivo = new File ("users.txt");
+            archivo = new File ("usuarios/users.txt");
             fr = new FileReader (archivo);
             br = new BufferedReader(fr);
             String linea;
             while((linea=br.readLine())!=null){
                 String[] datos=linea.split(",");
+                datos[1].strip();
                 if(datos[0].equals(usuario) && datos[1].equals(contrasena)){
                     System.out.println("Bienvenido "+usuario);
+                    br.close();
+                    fr.close();
                     return 1;
                 }
             }
             fr.close();
-            archivo = new File ("admins.txt");
+            archivo = new File ("usuarios/admins.txt");
             fr = new FileReader (archivo);
             br = new BufferedReader(fr);
             while((linea=br.readLine())!=null){
                 String[] datos=linea.split(",");
+                datos[1].strip();
                 if(datos[0].equals(usuario) && datos[1].equals(contrasena)){
                     System.out.println("Bienvenido "+usuario);
+                    br.close();
+                    fr.close();
                     return 2;
                 }
             }
             System.out.println("Usuario o contrasena incorrectos");
+            br.close();
+            fr.close();
             return 0;
         }
         catch(Exception e){
