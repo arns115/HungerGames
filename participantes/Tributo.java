@@ -141,6 +141,9 @@ public class Tributo extends Persona{
             s.append("Estatura: No hay informacion disponible\n");
         }
         s.append(getEstadisticas());
+        if(getArma()!=null){
+            s.append("Arma: "+ getArma()+"\n");
+        }
         return s.toString();
     }
 

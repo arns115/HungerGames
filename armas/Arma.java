@@ -86,7 +86,13 @@ public class Arma {
     public int hacerDano(int fuerza, int destreza, int inteligencia, int velocidad){
         int danoTotal=getDano();
         
-    
         return danoTotal;
+    }
+
+    /**
+     * Metodo para imprimir el nombre del arma
+     */
+    public String toString(){
+        return (Arma.class.getName());
     }
 }
