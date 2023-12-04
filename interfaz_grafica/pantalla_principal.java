@@ -26,7 +26,7 @@ public class pantalla_principal extends JFrame implements ActionListener{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
     
-        setVisible(true);
+        setVisible(false);
         setLocationRelativeTo(null);
         setLayout(null);
         set_components();

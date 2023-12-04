@@ -22,7 +22,7 @@ public class Facade {
      * Constructor de la clase fachada
      * Se inicializa la lista con los distritos y se seleccionan las personas que seran tributos
      */
-    public Facade(){
+    public Facade(JTextArea l){
         random=new Random();
         try{
             ObjectInputStream f=new ObjectInputStream(new FileInputStream("objetosDistritos.sav"));
@@ -49,7 +49,7 @@ public class Facade {
 
         //Imprime la informacion de los distritos junto a las personas que se han seleccionado
         for (Distrito dist: listaDistritos){
-            System.out.println(dist.toString());
+            l.setText(l.getText() + dist.toString() + "\n");
             TributosVivos.add(Cosecha.seleccionarPersona(dist, dist.getNumDistrito(), "hombres"));
             TributosVivos.add(Cosecha.seleccionarPersona(dist, dist.getNumDistrito(), "mujeres"));
         }
@@ -67,15 +67,13 @@ public class Facade {
     }
 
     public void inicializarJuegos(JTextArea l){
-        l.setText("");
+        
         for (Tributo tributo:TributosVivos){
             int rand=random.nextInt(12);
             if(rand>=9){
-                System.out.println("El tributo "+tributo.getNombre()+"ha decidido esconderse y no ha encontrado un arma");
                 l.setText(l.getText() + "El tributo "+tributo.getNombre()+"ha decidido esconderse y no ha encontrado un arma"+"\n");
             }
             else{
-                System.out.println("El tributo "+tributo.getNombre()+"ha encontrado un " +armas.get(rand));
                 l.setText(l.getText() + "El tributo "+tributo.getNombre()+"ha encontrado un " +armas.get(rand) +"\n");
                 tributo.setArma(armas.get(rand));
             }
@@ -89,7 +87,6 @@ public class Facade {
     
         for (Tributo tributo:TributosVivos){
             if(!tributo.vivo()){
-                System.out.println(tributo.getNombre() +" ha muerto");
                 l.setText(l.getText() + tributo.getNombre() + " ha muerto");
                 TributosVivos.remove(tributo);
             }
@@ -105,17 +102,15 @@ public class Facade {
             int rand=random.nextInt(4)+1;
             switch(rand){
                 case 1:
-                    System.out.println(tributo.getNombre()+" ha decidido esconderese");
-                    l.setText(l.getText() + tributo.getNombre()+" se decidido esconder"+ "\n");
+                    l.setText(l.getText() + tributo.getNombre()+" ha decidido esconderse"+ "\n");
                     break;
                 case 2:
-                    System.out.println(tributo.getNombre()+ " ha decidido atacar a otro tributo");
                     l.setText(l.getText() + tributo.getNombre()+ " ha decidido atacar a otro tributo" + "\n");
                     int rand2=random.nextInt(TributosVivos.size());
                     int i=0;
                     for(Tributo tributo2:TributosVivos){
                         if(i==rand2){
-                            tributo.atacar(tributo2);
+                            tributo.atacar(tributo2,l);
                         }
                         i++;
                     }
@@ -127,8 +122,8 @@ public class Facade {
 
                     break;
                 default:
-                    System.out.println("Ha aparecido un error");
             }
+            tributo.getEstadisticas().setSalud(tributo.getEstadisticas().getSalud()-10);
             eliminarTributosNoVivos(l);
         }
     }
@@ -139,7 +134,6 @@ public class Facade {
     public void mostrarTributosVivos(JTextArea l){
         l.setText("");
         for (Tributo tributo:TributosVivos){
-            System.out.println(tributo);
             l.setText(l.getText() + "\n\n" + tributo.toString());
         }
     }
@@ -150,4 +144,15 @@ public class Facade {
     public void opcionesAdmin(){
 
     }
+
+    public int get_tributos_vivos(){
+        return TributosVivos.size();
+    }
+    public HashSet <Tributo> get_tributos_vivos_hash(){
+        return TributosVivos;
+    }
+    public List<Distrito> get_lista_Distritos(){
+        return listaDistritos;
+    }
+
 }

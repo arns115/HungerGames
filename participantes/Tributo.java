@@ -1,5 +1,7 @@
 package participantes;
 
+import javax.swing.JTextArea;
+
 import armas.*;
 
 public class Tributo extends Persona{
@@ -21,12 +23,13 @@ public class Tributo extends Persona{
      * @param modifDestreza double
      * @param modifInteligencia double
      * @param modifVelocidad double
+     * @param sexo String
      */
-    public Tributo(String nombre, String apellido, int edad, double estatura, int distrito, int maxHealth, int maxStamina, double modifFuerza, double modifDestreza, double modifInteligencia, double modifVelocidad){
+    public Tributo(String nombre, String apellido, int edad, double estatura, int distrito, int maxHealth, int maxStamina, double modifFuerza, double modifDestreza, double modifInteligencia, double modifVelocidad, String sexo){
         super(nombre, apellido, edad);
         this.distrito=distrito;
         this.estatura=estatura;
-        this.estadisticas=new Estadisticas(maxHealth, maxStamina, modifFuerza, modifDestreza, modifInteligencia, modifVelocidad);
+        this.estadisticas=new Estadisticas(maxHealth, maxStamina, modifFuerza, modifDestreza, modifInteligencia, modifVelocidad, sexo);
     }
 
     /**
@@ -40,11 +43,12 @@ public class Tributo extends Persona{
      * @param modifDestreza double
      * @param modifInteligencia double
      * @param modifVelocidad double
+     * @param sexo String
      */
-    public Tributo(String nombre, String apellido, int edad, int distrito, int maxHealth, int maxStamina, double modifFuerza, double modifDestreza, double modifInteligencia, double modifVelocidad){
+    public Tributo(String nombre, String apellido, int edad, int distrito, int maxHealth, int maxStamina, double modifFuerza, double modifDestreza, double modifInteligencia, double modifVelocidad, String sexo){
         super(nombre, apellido, edad);
         this.distrito=distrito;
-        this.estadisticas=new Estadisticas(maxHealth, maxStamina, modifFuerza, modifDestreza, modifInteligencia, modifVelocidad);
+        this.estadisticas=new Estadisticas(maxHealth, maxStamina, modifFuerza, modifDestreza, modifInteligencia, modifVelocidad, sexo);
     }
     
     /**
@@ -114,16 +118,17 @@ public class Tributo extends Persona{
      * Metodo para que un tributo ataque a otro tributo
      * @param tributoAAtacar Tributo(instancia de otro tributo)
      */
-    public boolean atacar(Tributo tributoAAtacar){
+    public boolean atacar(Tributo tributoAAtacar,JTextArea l){
         if (poderUsarArma()){
             tributoAAtacar.getEstadisticas().setSalud(tributoAAtacar.getEstadisticas().getSalud()-arma.hacerDano(estadisticas.getFuerza()
-            , estadisticas.getDestreza(), estadisticas.getInteligencia(), estadisticas.getVelocidad()));
+            , estadisticas.getDestreza(), estadisticas.getInteligencia(), estadisticas.getVelocidad())*100);
 
             estadisticas.setStamina(estadisticas.getStamina()-arma.getRequerimientoStamina());
             return true;
         }
         else{
             System.out.println(getNombre() +" ha intentado atacar a" +tributoAAtacar.getNombre()+ " pero no tiene las suficientes estadisticas para hacerlo con el arma actual");
+            l.setText(l.getText() + getNombre() +" ha intentado atacar a" +tributoAAtacar.getNombre()+ " pero no tiene las suficientes estadisticas para hacerlo con el arma actual"+ "\n");
             return false;
         
         }

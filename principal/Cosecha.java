@@ -9,15 +9,18 @@ import distritos.clases_distritos.*;
 public class Cosecha {
     
     public static Tributo seleccionarPersona(Distrito distrito, Integer num, String HombresOMujeres){
-        Tributo tributo=new Tributo("", "", 0, 0, 0, 0, 0, 0, 0, 0);
+        Tributo tributo=new Tributo("", "", 0, 0, 0, 0, 0, 0, 0, 0,"M");
         try{
             BufferedReader br = new BufferedReader(new FileReader("distritos/personas_distritos/"+num.toString()+"/"+HombresOMujeres+num.toString()+".csv")); 
             String line="";
+            String sx = "";
             int maxNum;
             if(HombresOMujeres.equals("hombres")){
                 maxNum=distrito.getNumHombres();
+                sx = "H";
             }
             else{
+                sx = "F";
                 maxNum=distrito.getNumMujeres();
             }
             int rand=(int)(Math.random()*maxNum)+1;
@@ -28,7 +31,7 @@ public class Cosecha {
                 String []a=line.split(",");
                 System.out.println(a[2]);
                 tributo=new Tributo(a[0], a[1], Integer.valueOf(a[2]), Double.valueOf(a[3]), Integer.valueOf(num), distrito.maxSaludDistrito(), distrito.maxStaminaDistrito()
-                ,distrito.modificadorFuerza(), distrito.modificadorDestreza(), distrito.modificadorInteligencia(), distrito.modificadorVelocidad());
+                ,distrito.modificadorFuerza(), distrito.modificadorDestreza(), distrito.modificadorInteligencia(), distrito.modificadorVelocidad(),sx);
 
                 br.close();
 
