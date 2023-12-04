@@ -7,7 +7,8 @@ import armas.Armas_especificas.*;
 
 import java.util.*;
 
-import javax.swing.JLabel;
+
+import javax.swing.*;
 
 import java.io.*;
 
@@ -65,16 +66,17 @@ public class Facade {
         armas.add(new tridente());
     }
 
-    public void inicializarJuegos(JLabel l){
+    public void inicializarJuegos(JTextArea l){
+        l.setText("");
         for (Tributo tributo:TributosVivos){
             int rand=random.nextInt(12);
             if(rand>=9){
                 System.out.println("El tributo "+tributo.getNombre()+"ha decidido esconderse y no ha encontrado un arma");
-                l.setText("El tributo "+tributo.getNombre()+"ha decidido esconderse y no ha encontrado un arma");
+                l.setText(l.getText() + "El tributo "+tributo.getNombre()+"ha decidido esconderse y no ha encontrado un arma"+"\n");
             }
             else{
                 System.out.println("El tributo "+tributo.getNombre()+"ha encontrado un " +armas.get(rand));
-                l.setText("El tributo "+tributo.getNombre()+"ha encontrado un " +armas.get(rand));
+                l.setText(l.getText() + "El tributo "+tributo.getNombre()+"ha encontrado un " +armas.get(rand) +"\n");
                 tributo.setArma(armas.get(rand));
             }
         }
@@ -83,10 +85,12 @@ public class Facade {
     /**
      * Metodo para eliminar del set a los tributos que han muerto
      */
-    public void eliminarTributosNoVivos(){
+    public void eliminarTributosNoVivos(JTextArea l){
+    
         for (Tributo tributo:TributosVivos){
             if(!tributo.vivo()){
                 System.out.println(tributo.getNombre() +" ha muerto");
+                l.setText(l.getText() + tributo.getNombre() + " ha muerto");
                 TributosVivos.remove(tributo);
             }
         }
@@ -95,17 +99,18 @@ public class Facade {
     /**
      * Metodo para todo el funcionamiento del juego
      */
-    public void avanzarDia(JLabel l){
+    public void avanzarDia(JTextArea l){
+        l.setText("");
         for(Tributo tributo:TributosVivos){
             int rand=random.nextInt(4)+1;
             switch(rand){
                 case 1:
-                    l.setText(tributo.getNombre()+" ha decidido esconderese");
                     System.out.println(tributo.getNombre()+" ha decidido esconderese");
+                    l.setText(l.getText() + tributo.getNombre()+" se decidido esconder"+ "\n");
                     break;
                 case 2:
-                    l.setText(tributo.getNombre()+ " ha decidido atacar a otro tributo");
                     System.out.println(tributo.getNombre()+ " ha decidido atacar a otro tributo");
+                    l.setText(l.getText() + tributo.getNombre()+ " ha decidido atacar a otro tributo" + "\n");
                     int rand2=random.nextInt(TributosVivos.size());
                     int i=0;
                     for(Tributo tributo2:TributosVivos){
@@ -124,18 +129,18 @@ public class Facade {
                 default:
                     System.out.println("Ha aparecido un error");
             }
-            eliminarTributosNoVivos();
+            eliminarTributosNoVivos(l);
         }
     }
 
     /**
      * Metodo para imprimir la informacion de los tributos que siguen vivos
      */
-    public void mostrarTributosVivos(JLabel l){
-        
+    public void mostrarTributosVivos(JTextArea l){
+        l.setText("");
         for (Tributo tributo:TributosVivos){
             System.out.println(tributo);
-            l.setText(tributo.toString());
+            l.setText(l.getText() + "\n\n" + tributo.toString());
         }
     }
 
