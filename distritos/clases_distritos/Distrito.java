@@ -47,8 +47,8 @@ public class Distrito implements DistritoInterfaz, Serializable{
     }
 
     @Override
-    public void mostrarInformacionDistrito() {
-        System.out.println(info);
+    public String mostrarInformacionDistrito() {
+        return info;
     }
 
     public int maxSaludDistrito() {
@@ -83,5 +83,19 @@ public class Distrito implements DistritoInterfaz, Serializable{
         return numMujeres;
     }
     
+    /**
+     * Metodo toString de la clase para imprimir la informacion de los distritos.
+     */
+    public String toString(){
+        return mostrarInformacionDistrito()+
+        "\nSalud maxima: " +maxSaludDistrito()+
+        "\nStamina maxima: "+maxStaminaDistrito()+
+        "\nModificadorFuerza: "+modificadorFuerza()+
+        "\nModificadorDestreza: "+modificadorDestreza()+
+        "\nModificadorInteligencia: "+modificadorInteligencia()+
+        "\nModificadorVelocidad: "+modificadorVelocidad()+
+        "\nNumero de hombres: "+getNumHombres()+
+        "\nNumero de mujeres: " +getNumMujeres();
+    }
 
 }

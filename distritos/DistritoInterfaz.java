@@ -11,7 +11,7 @@ public interface DistritoInterfaz {
     /**
      * Se imprime la informacion del distrito que llame al metodo
      */
-    public void mostrarInformacionDistrito();
+    public String mostrarInformacionDistrito();
 
     /**
      * Devuelve numero de hombres en el distrito
