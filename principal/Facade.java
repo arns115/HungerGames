@@ -9,6 +9,7 @@ import java.util.*;
 import java.io.*;
 
 public class Facade {
+    Random random;
     List<Distrito> listaDistritos=new ArrayList<Distrito>();
     HashSet <Tributo> TributosVivos=new HashSet<Tributo>();
     List<Arma> armas=new ArrayList<Arma>();
@@ -18,6 +19,7 @@ public class Facade {
      * Se inicializa la lista con los distritos y se seleccionan las personas que seran tributos
      */
     public Facade(){
+        random=new Random();
         try{
             ObjectInputStream f=new ObjectInputStream(new FileInputStream("objetosDistritos.sav"));
             while(true){
@@ -62,7 +64,7 @@ public class Facade {
 
     public void inicializarJuegos(){
         for (Tributo tributo:TributosVivos){
-            int rand=((int)Math.random()*100)%12;
+            int rand=random.nextInt(12);
             if(rand>=9){
                 System.out.println("El tributo "+tributo.getNombre()+"ha decidido esconderse y no ha encontrado un arma");
             }
@@ -74,10 +76,49 @@ public class Facade {
     }
 
     /**
+     * Metodo para eliminar del set a los tributos que han muerto
+     */
+    public void eliminarTributosNoVivos(){
+        for (Tributo tributo:TributosVivos){
+            if(!tributo.vivo()){
+                System.out.println(tributo.getNombre() +" ha muerto");
+                TributosVivos.remove(tributo);
+            }
+        }
+    }
+
+    /**
      * Metodo para todo el funcionamiento del juego
      */
     public void avanzarDia(){
-        
+        for(Tributo tributo:TributosVivos){
+            int rand=random.nextInt(4)+1;
+            switch(rand){
+                case 1:
+                    System.out.println(tributo.getNombre()+" ha decidido esconderese");
+                    break;
+                case 2:
+                    System.out.println(tributo.getNombre()+ " ha decidido atacar a otro tributo");
+                    int rand2=random.nextInt(TributosVivos.size());
+                    int i=0;
+                    for(Tributo tributo2:TributosVivos){
+                        if(i==rand2){
+                            tributo.atacar(tributo2);
+                        }
+                        i++;
+                    }
+                    break;
+                case 3:
+                    
+                    break;
+                case 4:
+
+                    break;
+                default:
+                    System.out.println("Ha aparecido un error");
+            }
+            eliminarTributosNoVivos();
+        }
     }
 
     /**

@@ -14,7 +14,7 @@ public class Principal {
         Scanner sc=new Scanner(System.in);
         String usuario;
         String contrasena;
-        int user=0, op=0;
+        int user=0, op=0, contadorDias=1;
         System.out.println("Bienvenido a los juegos del hambre\n");
         System.out.println("Ingrese usuario y contrasena");
         while(user==0){
@@ -40,13 +40,20 @@ public class Principal {
             sc.nextLine();
             switch(op){
                 case 1:
+                    System.out.print("Nos encontramos en el dia "+contadorDias);
+                    contadorDias++;
                     facade.avanzarDia();
                     break;
                 case 2:
                     facade.mostrarTributosVivos();
                     break;
                 case 3:
-                    facade.opcionesAdmin();
+                    if(user==2){
+                        facade.opcionesAdmin();
+                    }
+                    else{
+                        System.out.println("No puedes acceder a esta funcionalidad debido a que no eres admin");
+                    }
                     break;
                 default:
                     System.out.println("Opcion no disponible");

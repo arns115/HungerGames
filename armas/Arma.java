@@ -85,7 +85,10 @@ public class Arma {
      */
     public int hacerDano(int fuerza, int destreza, int inteligencia, int velocidad){
         int danoTotal=getDano();
-        
+        danoTotal*=(fuerza/requerimientoFuerza);
+        danoTotal*=(destreza/requerimientoDestreza);
+        danoTotal*=(inteligencia/requerimientoInteligencia);
+        danoTotal*=(velocidad/requerimientoVelocidad);
         return danoTotal;
     }
 
