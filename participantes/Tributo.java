@@ -102,6 +102,9 @@ public class Tributo extends Persona{
      */
     public boolean poderUsarArma(){
         Estadisticas stats=getEstadisticas();
+        if(arma == null){
+            return false;
+        }
         return (stats.getFuerza()>=arma.getRequerimientoFuerza() && stats.getDestreza()>=arma.getRequerimientoDestreza() 
         && stats.getInteligencia()>=arma.getRequerimientoInteligencia() && stats.getVelocidad()>=arma.getRequerimientoVelocidad()
         && stats.getStamina()>=arma.getRequerimientoStamina());

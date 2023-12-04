@@ -12,13 +12,14 @@ import usuarios.RevisarUsers;
 
 
 
-public class pantalla_principal extends JFrame{
+public class pantalla_principal extends JFrame implements ActionListener{
     private ImageIcon img;
     private Font font;
     public JTextField usr, cont;
     private JButton enter;
     private JLabel titulo, resTMP;
     public int verificator = 0;
+    private juego jug;
     public pantalla_principal(){
         setTitle("Juegos del hambre");
         setBounds(0,0,500,700);
@@ -90,18 +91,23 @@ public class pantalla_principal extends JFrame{
 
 
 
-        enter.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e){
-                verificator = RevisarUsers.verificarUsuario(usr.getText(), cont.getText());
-                System.out.println(usr.getText() + " " + cont.getText() + verificator);
-                usr.setText("");
-                cont.setText("");
-                if(verificator == 0){
-                    resTMP.setText("Usuario o contraseña incorrectos");
-                }
-            }
-        });
+        enter.addActionListener(this);
+    }
+    @Override
+    public void actionPerformed(ActionEvent e){
+        verificator = RevisarUsers.verificarUsuario(usr.getText(), cont.getText());
+        System.out.println(usr.getText() + " " + cont.getText() +" "+ verificator);
+        usr.setText("");
+        cont.setText("");
+        if(verificator == 0){
+            resTMP.setText("Usuario o contraseña incorrectos");
+        }else{
+            System.out.println("entro");
+            jug = new juego(verificator);
+
+            jug.setVisible(true);
+            this.setVisible(false);
+        }
     }
     
     

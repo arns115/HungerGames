@@ -6,6 +6,9 @@ import armas.*;
 import armas.Armas_especificas.*;
 
 import java.util.*;
+
+import javax.swing.JLabel;
+
 import java.io.*;
 
 public class Facade {
@@ -62,14 +65,16 @@ public class Facade {
         armas.add(new tridente());
     }
 
-    public void inicializarJuegos(){
+    public void inicializarJuegos(JLabel l){
         for (Tributo tributo:TributosVivos){
             int rand=random.nextInt(12);
             if(rand>=9){
                 System.out.println("El tributo "+tributo.getNombre()+"ha decidido esconderse y no ha encontrado un arma");
+                l.setText("El tributo "+tributo.getNombre()+"ha decidido esconderse y no ha encontrado un arma");
             }
             else{
                 System.out.println("El tributo "+tributo.getNombre()+"ha encontrado un " +armas.get(rand));
+                l.setText("El tributo "+tributo.getNombre()+"ha encontrado un " +armas.get(rand));
                 tributo.setArma(armas.get(rand));
             }
         }
@@ -90,14 +95,16 @@ public class Facade {
     /**
      * Metodo para todo el funcionamiento del juego
      */
-    public void avanzarDia(){
+    public void avanzarDia(JLabel l){
         for(Tributo tributo:TributosVivos){
             int rand=random.nextInt(4)+1;
             switch(rand){
                 case 1:
+                    l.setText(tributo.getNombre()+" ha decidido esconderese");
                     System.out.println(tributo.getNombre()+" ha decidido esconderese");
                     break;
                 case 2:
+                    l.setText(tributo.getNombre()+ " ha decidido atacar a otro tributo");
                     System.out.println(tributo.getNombre()+ " ha decidido atacar a otro tributo");
                     int rand2=random.nextInt(TributosVivos.size());
                     int i=0;
@@ -124,10 +131,11 @@ public class Facade {
     /**
      * Metodo para imprimir la informacion de los tributos que siguen vivos
      */
-    public void mostrarTributosVivos(){
+    public void mostrarTributosVivos(JLabel l){
         
         for (Tributo tributo:TributosVivos){
             System.out.println(tributo);
+            l.setText(tributo.toString());
         }
     }
 

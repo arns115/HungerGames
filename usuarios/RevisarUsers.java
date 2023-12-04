@@ -19,8 +19,6 @@ public class RevisarUsers {
                 datos[1].strip();
                 if(datos[0].equals(usuario) && datos[1].equals(contrasena)){
                     System.out.println("Bienvenido "+usuario);
-                    br.close();
-                    fr.close();
                     return 1;
                 }
             }
@@ -33,14 +31,10 @@ public class RevisarUsers {
                 datos[1].strip();
                 if(datos[0].equals(usuario) && datos[1].equals(contrasena)){
                     System.out.println("Bienvenido "+usuario);
-                    br.close();
-                    fr.close();
                     return 2;
                 }
             }
             System.out.println("Usuario o contrasena incorrectos");
-            br.close();
-            fr.close();
             return 0;
         }
         catch(Exception e){
