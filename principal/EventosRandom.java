@@ -4,12 +4,7 @@ import java.util.*;
 
 public class EventosRandom extends Thread{
     int tipo;
-    boolean exit;
-
-    public EventosRandom(int tipo){
-        this.tipo=tipo;
-        exit=false;
-    }
+    boolean exit=false;
 
     public void stop1(){
         exit=true;
@@ -18,7 +13,7 @@ public class EventosRandom extends Thread{
     public void run(){
         Random ran=new Random();
         int num=10;
-        while(exit){
+        while(exit==false){
             int a=ran.nextInt(11);
             if(a==num){
                 switch(tipo){
@@ -36,7 +31,7 @@ public class EventosRandom extends Thread{
                 }
             }
             try{
-                Thread.sleep(10000);
+                Thread.sleep(5000);
             }
             catch(InterruptedException e){
                 e.printStackTrace();
