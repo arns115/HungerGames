@@ -21,4 +21,8 @@ public class arco extends Arma{
     public int getFlechas(){
         return flechas;
     }
+
+    public String toString(){
+        return "arco";
+    }
 }

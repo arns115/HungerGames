@@ -145,7 +145,7 @@ public class Tributo extends Persona{
         }
         s.append(getEstadisticas());
         if(getArma()!=null){
-            s.append("Arma: "+ getArma()+"\n");
+            s.append("\nArma: "+ getArma()+"\n");
         }
         return s.toString();
     }

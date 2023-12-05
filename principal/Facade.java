@@ -105,26 +105,72 @@ public class Facade {
             int rand=random.nextInt(4)+1;
             switch(rand){
                 case 1:
-                    System.out.println(tributo.getNombre()+" ha decidido esconderese");
-                    l.setText(l.getText() + tributo.getNombre()+" se decidido esconder"+ "\n");
+                    System.out.println(tributo.getNombre()+" ha decidido esconderse");
+                    l.setText(l.getText() + tributo.getNombre()+" se decidido esconder, recuperara un poco de vida y stamina (+50)"+ "\n");
+                    // se utiliza el min ya que no se puede sobrepasar salud maxima
+                    tributo.getEstadisticas().setSalud(Math.min(tributo.getEstadisticas().getSalud()+50, tributo.getEstadisticas().getMaxSalud()));
+                    tributo.getEstadisticas().setStamina(Math.min(tributo.getEstadisticas().getStamina()+50, tributo.getEstadisticas().getMaxStamina()));
                     break;
                 case 2:
                     System.out.println(tributo.getNombre()+ " ha decidido atacar a otro tributo");
                     l.setText(l.getText() + tributo.getNombre()+ " ha decidido atacar a otro tributo" + "\n");
-                    int rand2=random.nextInt(TributosVivos.size());
-                    int i=0;
-                    for(Tributo tributo2:TributosVivos){
-                        if(i==rand2){
-                            tributo.atacar(tributo2);
+                    if(tributo.getArma()!=null){
+                        int rand2=random.nextInt(TributosVivos.size());
+                        int i=0;
+                        for(Tributo tributo2:TributosVivos){
+                            if(i==rand2){
+                                tributo.atacar(tributo2);
+                            }
+                            i++;
                         }
-                        i++;
+                    }
+                    else{
+                        System.out.println(tributo.getNombre()+ " no tiene arma, por lo cual no puede atacar");
+                        l.setText(l.getText() + tributo.getNombre()+ " no tiene arma, por lo cual no puede atacar" + "\n");
                     }
                     break;
                 case 3:
-                    
+                    System.out.println(tributo.getNombre() +" ha encontrado una nueva arma");
+                    int rand3=random.nextInt(9);
+                    //si tiene un arma se elige al azar si la cambia o no
+                    if (tributo.getArma()!=null){
+                        if(random.nextInt(2)==1){
+                            System.out.println(tributo.getNombre()+" ha decidido cambiar " +tributo.getArma().toString()+ " por " +armas.get(rand3).toString());
+                            tributo.setArma(armas.get(rand3));
+                        }
+                        else{
+                            System.out.println(tributo.getNombre()+" ha decidido quedarse con su "+tributo.getArma().toString()+ " en vez de cambiarla por " +
+                            armas.get(rand3).toString());
+                        }
+                    }
+                    else{
+                        System.out.println(tributo.getNombre()+" ha equipado "+armas.get(rand3).toString());
+                        tributo.setArma(armas.get(rand3));
+                    }
                     break;
                 case 4:
-
+                    System.out.println(tributo.getNombre() +" ha encontrado una pocion de ");
+                    int rand4=random.nextInt(4)+1;
+                    switch (rand4) {
+                        case 1:
+                            System.out.println("Fuerza(+25 fuerza)");
+                            tributo.getEstadisticas().setFuerza(tributo.getEstadisticas().getFuerza()+25);
+                            break;
+                        case 2:
+                            System.out.println("Destreza(+25 destreza)");
+                            tributo.getEstadisticas().setDestreza(tributo.getEstadisticas().getDestreza()+25);
+                            break;
+                        case 3:
+                            System.out.println("Inteligencia(+25 fuerza)");
+                            tributo.getEstadisticas().setInteligencia(tributo.getEstadisticas().getInteligencia()+25);
+                            break;
+                        case 4:
+                            System.out.println("Velocidad(+25 velocidad)");
+                            tributo.getEstadisticas().setVelocidad(tributo.getEstadisticas().getVelocidad()+25);
+                            break;
+                        default:
+                            break;
+                    }
                     break;
                 default:
                     System.out.println("Ha aparecido un error");
@@ -147,7 +193,37 @@ public class Facade {
     /**
      * Metodo para que el admin pueda realizar ciertas acciones sobre el juego
      */
-    public void opcionesAdmin(){
-
+    public void opcionesAdmin(JTextArea l){
+        Scanner sc5=new Scanner(System.in);
+        System.out.println("Que quiere hacer el administrador? ");
+        System.out.println("1)Curar vida y stamina de tributos(+15) 2)Enevenenar arena(-15 vida, -10 stamina) 3)Aura de estadisticas (+20 a todas las stats)");
+        int opcion=sc5.nextInt();
+        sc5.nextLine();
+        switch (opcion) {
+            case 1:
+                for (Tributo tribute: TributosVivos){
+                    tribute.getEstadisticas().setSalud(Math.min(tribute.getEstadisticas().getSalud()+15, tribute.getEstadisticas().getMaxSalud()));
+                    tribute.getEstadisticas().setStamina(Math.min(tribute.getEstadisticas().getStamina()+15, tribute.getEstadisticas().getMaxStamina()));
+                }
+                break;
+            case 2:
+                for (Tributo tribute: TributosVivos){
+                    tribute.getEstadisticas().setSalud(tribute.getEstadisticas().getSalud()-15);
+                    tribute.getEstadisticas().setStamina(tribute.getEstadisticas().getStamina()-10);
+                }
+                eliminarTributosNoVivos(l);
+                break;
+            case 3:
+                for (Tributo tribute: TributosVivos){
+                    tribute.getEstadisticas().setFuerza(tribute.getEstadisticas().getFuerza()+20);
+                    tribute.getEstadisticas().setDestreza(tribute.getEstadisticas().getDestreza()+20);
+                    tribute.getEstadisticas().setInteligencia(tribute.getEstadisticas().getInteligencia()+20);
+                    tribute.getEstadisticas().setVelocidad(tribute.getEstadisticas().getVelocidad()+20);
+                }
+                break;
+            default:
+                System.out.println("Opcion no disponible");
+                break;
+        }
     }
 }

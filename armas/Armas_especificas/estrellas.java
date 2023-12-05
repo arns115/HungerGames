@@ -6,4 +6,8 @@ public class estrellas extends Arma{
     public estrellas() {
         super(40,20,65,45,20,10);
     }
+
+    public String toString(){
+        return "estrellas";
+    }
 }

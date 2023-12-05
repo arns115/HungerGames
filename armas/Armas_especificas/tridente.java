@@ -7,4 +7,8 @@ public class tridente extends Arma{
     public tridente() {
         super(80,80,60,10,40,70);
     }
+
+    public String toString(){
+        return "tridente";
+    }
 }

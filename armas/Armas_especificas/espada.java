@@ -6,4 +6,8 @@ public class espada extends Arma{
     public espada() {
         super(80,80,50,10,40,60);
     }
+
+    public String toString(){
+        return "espada";
+    }
 }
