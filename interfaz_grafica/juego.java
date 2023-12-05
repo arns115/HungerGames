@@ -14,7 +14,7 @@ public class juego extends JFrame implements ActionListener{
     private JButton pasardias, mostrar_tributos, modificar_tribs, mostrar_distritos;
     public Facade fachada;
     private Integer cont_d = 0;
-    private JLabel contador_dias, contador_sobrevivientes;
+    private JLabel contador_dias, contador_sobrevivientes, clima;
     private JTextArea sucesos;
     private JScrollPane scroll;
     private Font font;
@@ -29,7 +29,7 @@ public class juego extends JFrame implements ActionListener{
         setLocationRelativeTo(null);
         set_components();
         fachada = new Facade(sucesos);
-        fachada.inicializarJuegos(sucesos);
+        fachada.inicializarJuegos(sucesos, clima);
     }
     private void set_components(){
         initialize_font();
@@ -43,6 +43,12 @@ public class juego extends JFrame implements ActionListener{
         contador_dias.setBounds(100,10,200,20);
         contador_dias.setFont(font);
         add(contador_dias);
+        
+        clima = new JLabel("sin cambios");
+        clima.setBounds(450,40,300,20);
+        clima.setFont(font);
+        clima.setForeground(Color.RED);
+        add(clima);
 
 
         sucesos = new JTextArea();
@@ -111,7 +117,7 @@ public class juego extends JFrame implements ActionListener{
             }
         });
         mostrar_distritos.setFont(font);
-        add(mostrar_tributos);
+        add(mostrar_distritos);
 
         ImageIcon img = new ImageIcon("Recursos/fondo.jpg");
         JLabel etiq_img = new JLabel(img);

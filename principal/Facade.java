@@ -5,14 +5,11 @@ import interfaz_grafica.admin_opc;
 import participantes.*;
 import armas.*;
 import armas.Armas_especificas.*;
-import principal.EventosRandom;
 
 import java.util.*;
 
 
 import javax.swing.*;
-//import java.awt.*;
-import java.awt.event.*;
 import java.io.*;
 
 public class Facade {
@@ -76,26 +73,24 @@ public class Facade {
         armas.add(new tridente());
     }
 
-    public void inicializarJuegos(JTextArea l){
+    public void inicializarJuegos(JTextArea l, JLabel l1){
         
         for (Tributo tributo:TributosVivos){
             int rand=random.nextInt(12);
             if(rand>=9){
-                System.out.println("El tributo "+tributo.getNombre()+" ha decidido esconderse y no ha encontrado un arma");
                 l.setText(l.getText() + "El tributo "+tributo.getNombre()+" ha decidido esconderse y no ha encontrado un arma"+"\n");
             }
             else{
-                System.out.println("El tributo "+tributo.getNombre()+" ha encontrado un " +armas.get(rand));
                 l.setText(l.getText() + "El tributo "+tributo.getNombre()+" ha encontrado un " +armas.get(rand) +"\n");
                 tributo.setArma(armas.get(rand));
             }
         }
-        tipo1=new EventosRandom(1);
-        tipo2=new EventosRandom(2);
-        tipo3=new EventosRandom(3);
-        tipo1.start();
-        tipo2.start();
-        tipo3.start();
+        tipo1=new EventosRandom(1,l1);
+        tipo2=new EventosRandom(2,l1);
+        tipo3=new EventosRandom(3,l1);
+        tipo1.run();
+        tipo2.run();
+        tipo3.run();
     }
 
     /**
@@ -124,7 +119,6 @@ public class Facade {
             int rand=random.nextInt(4)+1;
             switch(rand){
                 case 1:
-                    System.out.println(tributo.getNombre()+" ha decidido esconderse");
                     l.setText(l.getText() + tributo.getNombre()+" se decidido esconder, recuperara un poco de vida y stamina (+50)"+ "\n");
                     // se utiliza el min ya que no se puede sobrepasar salud maxima
                     tributo.getEstadisticas().setSalud(Math.min(tributo.getEstadisticas().getSalud()+50, tributo.getEstadisticas().getMaxSalud()));
@@ -147,53 +141,42 @@ public class Facade {
                     }
                     break;
                 case 3:
-                    System.out.println(tributo.getNombre()+ "  ha encontrado una nueva arma");
                     l.setText(l.getText() + tributo.getNombre()+ "  ha encontrado una nueva arma" + "\n");
                     int rand3=random.nextInt(9);
                     //si tiene un arma se elige al azar si la cambia o no
                     if (tributo.getArma()!=null){
                         if(random.nextInt(2)==1){
-                            System.out.println(tributo.getNombre()+ " ha decidido cambiar " +tributo.getArma().toString()+ " por " +armas.get(rand3).toString() + "\n");
-                            tributo.setArma(armas.get(rand3));
                             l.setText(l.getText() + tributo.getNombre()+ " ha decidido cambiar " +tributo.getArma().toString()+ " por " +armas.get(rand3).toString() + "\n");
                             tributo.setArma(armas.get(rand3));
                         }
                         else{
-                            System.out.println(tributo.getNombre()+ " ha decidido quedarse con su "+tributo.getArma().toString()+ " en vez de cambiarla por " +
-                            armas.get(rand3).toString());
                             l.setText(l.getText() + tributo.getNombre()+ " ha decidido quedarse con su "+tributo.getArma().toString()+ " en vez de cambiarla por " +
                             armas.get(rand3).toString() + "\n");
                         }
                     }
                     else{
-                        System.out.println(tributo.getNombre()+" ha equipado "+armas.get(rand3).toString());
                         l.setText(l.getText() + tributo.getNombre()+" ha equipado "+armas.get(rand3).toString());
                         
                         tributo.setArma(armas.get(rand3));
                     }
                     break;
                 case 4:
-                    System.out.println(tributo.getNombre() +" ha encontrado una pocion de ");
                     l.setText(l.getText() + tributo.getNombre() +" ha encontrado una pocion de ");
                     int rand4=random.nextInt(4)+1;
                     switch (rand4) {
                         case 1:
-                            System.out.println("Fuerza(+25 fuerza)");
                             l.setText(l.getText() + "Fuerza(+25 fuerza)" + "\n");
                             tributo.getEstadisticas().setFuerza(tributo.getEstadisticas().getFuerza()+25);
                             break;
                         case 2:
-                            System.out.println("Destreza(+25 destreza)");
                             l.setText(l.getText() + "Destreza(+25 destreza)" + "\n");
                             tributo.getEstadisticas().setDestreza(tributo.getEstadisticas().getDestreza()+25);
                             break;
                         case 3:
-                            System.out.println("Inteligencia(+25 fuerza)");
                             l.setText(l.getText() + "Inteligencia(+25 fuerza)" + "\n");
                             tributo.getEstadisticas().setInteligencia(tributo.getEstadisticas().getInteligencia()+25);
                             break;
                         case 4:
-                            System.out.println("Velocidad(+25 velocidad)"); 
                             l.setText(l.getText() + "Velocidad(+25 velocidad)" + "\n");
                             tributo.getEstadisticas().setVelocidad(tributo.getEstadisticas().getVelocidad()+25);
                             break;

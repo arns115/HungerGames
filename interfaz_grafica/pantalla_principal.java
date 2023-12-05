@@ -52,12 +52,15 @@ public class pantalla_principal extends JFrame implements ActionListener{
         
         initialize_font();
         
-        
+        font.deriveFont(Font.PLAIN, 20);
         titulo = new JLabel("Los juegos del hambre");
-        titulo.setBounds(160,0,300,30);
+        titulo.setBounds(160,0,300,50);
         titulo.setFont(font);
+        titulo.setForeground(Color.WHITE);
+
         add(titulo);
-        
+
+        font.deriveFont(Font.PLAIN, 12);
         resTMP = new JLabel("");
         resTMP.setBounds(160,20,300,30);
         resTMP.setFont(font);
@@ -92,13 +95,11 @@ public class pantalla_principal extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e){
         verificator = RevisarUsers.verificarUsuario(usr.getText(), cont.getText());
-        System.out.println(usr.getText() + " " + cont.getText() +" "+ verificator);
         usr.setText("");
         cont.setText("");
         if(verificator == 0){
             resTMP.setText("Usuario o contraseña incorrectos");
         }else{
-            System.out.println("entro");
             jug = new juego(verificator);
 
             jug.setVisible(true);
