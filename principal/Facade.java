@@ -81,10 +81,12 @@ public class Facade {
         for (Tributo tributo:TributosVivos){
             int rand=random.nextInt(12);
             if(rand>=9){
-                l.setText(l.getText() + "El tributo "+tributo.getNombre()+"ha decidido esconderse y no ha encontrado un arma"+"\n");
+                System.out.println("El tributo "+tributo.getNombre()+" ha decidido esconderse y no ha encontrado un arma");
+                l.setText(l.getText() + "El tributo "+tributo.getNombre()+" ha decidido esconderse y no ha encontrado un arma"+"\n");
             }
             else{
-                l.setText(l.getText() + "El tributo "+tributo.getNombre()+"ha encontrado un " +armas.get(rand) +"\n");
+                System.out.println("El tributo "+tributo.getNombre()+" ha encontrado un " +armas.get(rand));
+                l.setText(l.getText() + "El tributo "+tributo.getNombre()+" ha encontrado un " +armas.get(rand) +"\n");
                 tributo.setArma(armas.get(rand));
             }
         }

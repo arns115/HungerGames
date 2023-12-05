@@ -127,8 +127,8 @@ public class Tributo extends Persona{
             return true;
         }
         else{
-            System.out.println(getNombre() +" ha intentado atacar a" +tributoAAtacar.getNombre()+ " pero no tiene las suficientes estadisticas para hacerlo con el arma actual");
-            l.setText(l.getText() + getNombre() +" ha intentado atacar a" +tributoAAtacar.getNombre()+ " pero no tiene las suficientes estadisticas para hacerlo con el arma actual"+ "\n");
+            System.out.println(getNombre() +" ha intentado atacar a " +tributoAAtacar.getNombre()+ " pero no tiene las suficientes estadisticas para hacerlo con el arma actual");
+            l.setText(l.getText() + getNombre() +" ha intentado atacar a " +tributoAAtacar.getNombre()+ " pero no tiene las suficientes estadisticas para hacerlo con el arma actual"+ "\n");
             return false;
         
         }
