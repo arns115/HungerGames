@@ -62,6 +62,9 @@ public class juego extends JFrame implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent e){
                 if(fachada.get_tributos_vivos()==1){
+                    fachada.tipo1.stop1();
+                    fachada.tipo2.stop1();
+                    fachada.tipo3.stop1();
                     ganador win_p = new ganador(fachada);
                     win_p.setVisible(true);
                     setVisible(false);

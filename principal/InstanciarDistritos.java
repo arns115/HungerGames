@@ -117,7 +117,7 @@ public class InstanciarDistritos {
             f.close();
         }
         catch (IOException e){
-            e.printStackTrace();
+            
         }
     }
 }

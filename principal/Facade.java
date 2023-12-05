@@ -5,6 +5,7 @@ import interfaz_grafica.admin_opc;
 import participantes.*;
 import armas.*;
 import armas.Armas_especificas.*;
+import principal.EventosRandom;
 
 import java.util.*;
 
@@ -19,6 +20,10 @@ public class Facade {
     List<Distrito> listaDistritos=new ArrayList<Distrito>();
     HashSet <Tributo> TributosVivos=new HashSet<Tributo>();
     List<Arma> armas=new ArrayList<Arma>();
+    public EventosRandom tipo1;
+    public EventosRandom tipo2;
+    public EventosRandom tipo3;
+    
 
     /**
      * Constructor de la clase fachada
@@ -38,6 +43,9 @@ public class Facade {
                 }
             }
             f.close();
+        }
+        catch(EOFException e){
+
         }
         catch(IOException e){
             e.printStackTrace();
@@ -80,18 +88,27 @@ public class Facade {
                 tributo.setArma(armas.get(rand));
             }
         }
+        tipo1=new EventosRandom(1);
+        tipo2=new EventosRandom(2);
+        tipo3=new EventosRandom(3);
+        tipo1.start();
+        tipo2.start();
+        tipo3.start();
     }
 
     /**
      * Metodo para eliminar del set a los tributos que han muerto
      */
     public void eliminarTributosNoVivos(JTextArea l){
-    
+        List<Tributo> listaNoVivos=new ArrayList<Tributo>();
         for (Tributo tributo:TributosVivos){
             if(!tributo.vivo()){
-                l.setText(l.getText() + tributo.getNombre() + " ha muerto");
-                TributosVivos.remove(tributo);
+                listaNoVivos.add(tributo);
             }
+        }
+        for(Tributo tributo:listaNoVivos){
+            TributosVivos.remove(tributo);
+            l.setText(l.getText() + tributo.getNombre() + " ha muerto");
         }
     }
 
@@ -101,6 +118,7 @@ public class Facade {
     public void avanzarDia(JTextArea l){
         l.setText("");
         for(Tributo tributo:TributosVivos){
+            if(!tributo.vivo()) continue;
             int rand=random.nextInt(4)+1;
             switch(rand){
                 case 1:
@@ -173,8 +191,8 @@ public class Facade {
                 default:
             }
             //tributo.getEstadisticas().setSalud(tributo.getEstadisticas().getSalud()-10);
-            eliminarTributosNoVivos(l);
         }
+        eliminarTributosNoVivos(l);
     }
 
     /**
