@@ -29,7 +29,7 @@ public class admin_opc extends JFrame{
         cv.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                l.setText(l.getText() + "\n" + "Eligio el 1");
+                l.setText(l.getText() + "\n" + "Eligio el 1\n");
                 for (Tributo tribute: TributosVivos){
                     tribute.getEstadisticas().setSalud(Math.min(tribute.getEstadisticas().getSalud()+15, tribute.getEstadisticas().getMaxSalud()));
                     tribute.getEstadisticas().setStamina(Math.min(tribute.getEstadisticas().getStamina()+15, tribute.getEstadisticas().getMaxStamina()));
@@ -44,7 +44,7 @@ public class admin_opc extends JFrame{
         ev.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                l.setText(l.getText() + "\n" + "Eligio el 2");
+                l.setText(l.getText() + "\n" + "Eligio el 2\n");
                 for (Tributo tribute: TributosVivos){
                     tribute.getEstadisticas().setSalud(tribute.getEstadisticas().getSalud()-15);
                     tribute.getEstadisticas().setStamina(tribute.getEstadisticas().getStamina()-10);
@@ -60,7 +60,7 @@ public class admin_opc extends JFrame{
         ae.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                l.setText(l.getText() + "\n" + "Eligio el 3");
+                l.setText(l.getText() + "\n" + "Eligio el 3\n");
                 for (Tributo tribute: TributosVivos){
                     tribute.getEstadisticas().setFuerza(tribute.getEstadisticas().getFuerza()+20);
                     tribute.getEstadisticas().setDestreza(tribute.getEstadisticas().getDestreza()+20);
