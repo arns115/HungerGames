@@ -19,10 +19,10 @@ public class Estadisticas {
         this.salud=maxHealth;
         this.maxStamina=maxStamina;
         this.stamina=maxStamina;
-        this.inteligencia=(int)(Math.random()*100*modifFuerza)+1;
-        this.velocidad=(int)(Math.random()*100*modifDestreza)+1;
-        this.destreza=(int)(Math.random()*100*modifInteligencia)+1;
-        this.fuerza=(int)(Math.random()*100*modifVelocidad)+1;
+        this.inteligencia=(int)(Math.random()*100*modifFuerza);
+        this.velocidad=(int)(Math.random()*100*modifDestreza);
+        this.destreza=(int)(Math.random()*100*modifInteligencia);
+        this.fuerza=(int)(Math.random()*100*modifVelocidad);
     }
     /**
      * getter del sexo(masculino/femenino)

@@ -1,14 +1,14 @@
 package interfaz_grafica;
 
-import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
+import java.awt.*;
+import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
 import javax.swing.*;
-
 import distritos.clases_distritos.Distrito;
 import principal.Facade;
-public class juego extends JFrame {
+
+public class juego extends JFrame implements ActionListener{
     public int opc;
     private int acceso;
     private JButton pasardias, mostrar_tributos, modificar_tribs, mostrar_distritos;
@@ -17,14 +17,14 @@ public class juego extends JFrame {
     private JLabel contador_dias, contador_sobrevivientes;
     private JTextArea sucesos;
     private JScrollPane scroll;
-    
+    private Font font;
 
     public juego(int acceso){
         this.acceso = acceso;
-
+        setTitle("JUEGOS DEL HAMBRE");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
-        setBounds(0,0,500,600);
+        setBounds(0,0,640,360);
         setVisible(false);
         setLocationRelativeTo(null);
         set_components();
@@ -32,18 +32,23 @@ public class juego extends JFrame {
         fachada.inicializarJuegos(sucesos);
     }
     private void set_components(){
+        initialize_font();
+
         contador_sobrevivientes = new JLabel("tributos vivos: 24");
         contador_sobrevivientes.setBounds(0,10,200,20);
+        contador_sobrevivientes.setFont(font);
         add(contador_sobrevivientes);
 
         contador_dias = new JLabel("dias transcurridos: 0");
         contador_dias.setBounds(100,10,200,20);
+        contador_dias.setFont(font);
         add(contador_dias);
 
 
         sucesos = new JTextArea();
         sucesos.setLineWrap(true);
         sucesos.setEditable(false);
+        //sucesos.setFont(font);
 
         scroll = new JScrollPane(sucesos,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scroll.setBounds(20,50,400,250);
@@ -52,7 +57,7 @@ public class juego extends JFrame {
 
 
         pasardias = new JButton("siguiente dia");
-        pasardias.setBounds(160,300,150,30);   
+        pasardias.setBounds(450,100,150,30);   
         pasardias.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
@@ -61,38 +66,38 @@ public class juego extends JFrame {
                     win_p.setVisible(true);
                     setVisible(false);
                 }
-
-                cont_d++;
-                fachada.avanzarDia(sucesos);
-                contador_dias.setText("dias transcurridos: " + cont_d.toString());
-                contador_sobrevivientes.setText("tributos vivos: " + fachada.get_tributos_vivos());
+                try{
+                    fachada.avanzarDia(sucesos);
+                }finally{
+                    cont_d++;
+                    contador_dias.setText("dias transcurridos: " + cont_d.toString());
+                    contador_sobrevivientes.setText("tributos vivos: " + fachada.get_tributos_vivos());
+                }
             }
         });
+        pasardias.setFont(font);
         add(pasardias);
 
         mostrar_tributos = new JButton("mostrar tributos vivos");
-        mostrar_tributos.setBounds(160,330,150,30);
+        mostrar_tributos.setBounds(450,130,150,30);
         mostrar_tributos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
                 fachada.mostrarTributosVivos(sucesos);
             }
         });
+        mostrar_tributos.setFont(font);
         add(mostrar_tributos);
         if(acceso == 2){
             modificar_tribs = new JButton("modificar el juego");
-            modificar_tribs.setBounds(160,360,150,30);
-            modificar_tribs.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e){
-                    fachada.opcionesAdmin();
-                }
-            });
+            modificar_tribs.setBounds(450,160,150,30);
+            modificar_tribs.addActionListener(this);
+            modificar_tribs.setFont(font);
             add(modificar_tribs);
         }
-
+        
         mostrar_distritos = new JButton("Mostrar distritos");
-        mostrar_distritos.setBounds(160,390,150,30);
+        mostrar_distritos.setBounds(450,190,150,30);
         mostrar_distritos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
@@ -102,6 +107,33 @@ public class juego extends JFrame {
                 }
             }
         });
-        add(mostrar_distritos);
+        mostrar_distritos.setFont(font);
+        add(mostrar_tributos);
+
+        ImageIcon img = new ImageIcon("Recursos/fondo.jpg");
+        JLabel etiq_img = new JLabel(img);
+        
+        etiq_img.setBounds(0,0,640,340);
+        add(etiq_img);
+    }
+    private Font cargar_Font(String path){
+        Font custom_Font = null;
+        try{
+            custom_Font = Font.createFont(Font.TRUETYPE_FONT,new File(path)).deriveFont(Font.PLAIN,20);
+            GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(custom_Font);
+
+        }catch(IOException | FontFormatException e){
+            e.printStackTrace();
+            custom_Font = new Font("Arial", Font.PLAIN, 16);
+        }
+        return custom_Font;
+    }
+    private void initialize_font(){
+        String pathF = "Recursos/DirtyCrown.ttf";
+        font = cargar_Font(pathF);
+    }
+    @Override
+    public void actionPerformed(ActionEvent e){
+        fachada.opcionesAdmin(sucesos, this);
     }
 }

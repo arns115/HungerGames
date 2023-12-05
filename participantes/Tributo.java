@@ -121,7 +121,7 @@ public class Tributo extends Persona{
     public boolean atacar(Tributo tributoAAtacar,JTextArea l){
         if (poderUsarArma()){
             tributoAAtacar.getEstadisticas().setSalud(tributoAAtacar.getEstadisticas().getSalud()-arma.hacerDano(estadisticas.getFuerza()
-            , estadisticas.getDestreza(), estadisticas.getInteligencia(), estadisticas.getVelocidad())*100);
+            , estadisticas.getDestreza(), estadisticas.getInteligencia(), estadisticas.getVelocidad()));
 
             estadisticas.setStamina(estadisticas.getStamina()-arma.getRequerimientoStamina());
             return true;

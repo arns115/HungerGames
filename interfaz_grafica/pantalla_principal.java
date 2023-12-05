@@ -3,10 +3,7 @@ import java.io.File;
 import java.io.IOException;
 import java.awt.*;
 import java.awt.event.*;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
-
 import usuarios.RevisarUsers;
 
 
@@ -22,7 +19,7 @@ public class pantalla_principal extends JFrame implements ActionListener{
     private juego jug;
     public pantalla_principal(){
         setTitle("Juegos del hambre");
-        setBounds(0,0,500,700);
+        setBounds(0,0,640,360);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
     
@@ -53,20 +50,15 @@ public class pantalla_principal extends JFrame implements ActionListener{
     }
     private void set_components(){
         
-        //initialize_font();
-        /*
-        img = new ImageIcon("Recursos/fondo.jpg");
-        JLabel etiq_img = new JLabel(img);
+        initialize_font();
         
-        etiq_img.setBounds(0,0,640,340);
-        add(etiq_img);
-        */
+        
         titulo = new JLabel("Los juegos del hambre");
         titulo.setBounds(160,0,300,30);
         titulo.setFont(font);
         add(titulo);
         
-        resTMP = new JLabel("texto ingresado: ");
+        resTMP = new JLabel("");
         resTMP.setBounds(160,20,300,30);
         resTMP.setFont(font);
         add(resTMP);
@@ -76,21 +68,25 @@ public class pantalla_principal extends JFrame implements ActionListener{
         usr.setBackground(Color.LIGHT_GRAY);
         usr.setFont(font);
         add(usr);
-
+        
         cont = new JTextField("ingrese la contraseña");
         cont.setBounds(160,120,200,30);
         cont.setBackground(Color.LIGHT_GRAY);
         cont.setFont(font);
         add(cont);
-
+        
         enter = new JButton("entrar");
         enter.setBounds(160,150,150,30);
         enter.setFont(font);
         add(enter);
-       
-
-
-
+        
+        
+        img = new ImageIcon("Recursos/fondo.jpg");
+        JLabel etiq_img = new JLabel(img);
+        
+        etiq_img.setBounds(0,0,640,340);
+        add(etiq_img);
+        
         enter.addActionListener(this);
     }
     @Override
