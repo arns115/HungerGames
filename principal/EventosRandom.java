@@ -12,7 +12,6 @@ public class EventosRandom extends Thread{
     public void run(){
         Random ran=new Random();
         int num=10;
-
         while(exit==false){
             int a=ran.nextInt(11);
             if(a==num){
@@ -27,7 +26,7 @@ public class EventosRandom extends Thread{
                         System.out.println("Se ha convertido en un dia muy soleado en la arena");
                         break;
                     default:
-                        System.out.println("Inicializacion incorrecta de los hilos");
+                    System.out.println("Inicializacion incorrecta de los hilos");
                 }
             }
             

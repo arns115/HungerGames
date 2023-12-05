@@ -123,7 +123,6 @@ public class juego extends JFrame implements ActionListener{
 
         ImageIcon img = new ImageIcon("Recursos/fondo.jpg");
         JLabel etiq_img = new JLabel(img);
-        
         etiq_img.setBounds(0,0,640,340);
         add(etiq_img);
     }
