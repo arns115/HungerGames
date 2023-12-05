@@ -36,11 +36,13 @@ public class juego extends JFrame implements ActionListener{
 
         contador_sobrevivientes = new JLabel("tributos vivos: 24");
         contador_sobrevivientes.setBounds(0,10,200,20);
+        contador_sobrevivientes.setForeground(Color.WHITE);
         contador_sobrevivientes.setFont(font);
         add(contador_sobrevivientes);
 
         contador_dias = new JLabel("dias transcurridos: 0");
-        contador_dias.setBounds(100,10,200,20);
+        contador_dias.setBounds(130,10,200,20);
+        contador_dias.setForeground(Color.WHITE);
         contador_dias.setFont(font);
         add(contador_dias);
         

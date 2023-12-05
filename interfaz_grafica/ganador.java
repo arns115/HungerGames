@@ -15,7 +15,7 @@ public class ganador extends JFrame implements ActionListener{
 
     public ganador(Facade fachada){
         this.fachada = fachada;
-
+        setTitle("GANADOR");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
         setBounds(0,0,500,500);
