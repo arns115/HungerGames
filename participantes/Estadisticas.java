@@ -9,22 +9,28 @@ public class Estadisticas {
     private int fuerza;
     private int destreza;
     private int velocidad;
-
+    private String sexo;
     /**
      * Constructor de la clase. Inicializa todos los atributos a un valor random entre 0 y 100.
      */
-    public Estadisticas(int maxHealth, int maxStamina, double modifFuerza, double modifDestreza, double modifInteligencia, double modifVelocidad){
+    public Estadisticas(int maxHealth, int maxStamina, double modifFuerza, double modifDestreza, double modifInteligencia, double modifVelocidad,String sexo){
+        this.sexo = sexo;
         this.maxSalud=maxHealth;
         this.salud=maxHealth;
         this.maxStamina=maxStamina;
         this.stamina=maxStamina;
-        this.inteligencia=(int)(Math.random()*100*modifFuerza);
-        this.velocidad=(int)(Math.random()*100*modifDestreza);
-        this.destreza=(int)(Math.random()*100*modifInteligencia);
-        this.fuerza=(int)(Math.random()*100*modifVelocidad);
+        this.inteligencia=(int)(Math.random()*100*modifFuerza)+1;
+        this.velocidad=(int)(Math.random()*100*modifDestreza)+1;
+        this.destreza=(int)(Math.random()*100*modifInteligencia)+1;
+        this.fuerza=(int)(Math.random()*100*modifVelocidad)+1;
     }
-
-
+    /**
+     * getter del sexo(masculino/femenino)
+     * @return String
+     */
+    public String getSexo(){
+        return sexo;
+    }
     /**
      * Getter de salud maxima
      * @return int
