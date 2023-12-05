@@ -108,7 +108,7 @@ public class Facade {
         }
         for(Tributo tributo:listaNoVivos){
             TributosVivos.remove(tributo);
-            l.setText(l.getText() + tributo.getNombre() + " ha muerto");
+            l.setText(l.getText() + tributo.getNombre() + " ha muerto\n");
         }
     }
 
