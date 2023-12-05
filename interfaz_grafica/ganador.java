@@ -67,5 +67,6 @@ public class ganador extends JFrame implements ActionListener{
 
         pant.setVisible(true);
         this.setVisible(false);
+        dispose();
     }
 }

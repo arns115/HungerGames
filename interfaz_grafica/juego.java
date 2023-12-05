@@ -76,6 +76,7 @@ public class juego extends JFrame implements ActionListener{
                     ganador win_p = new ganador(fachada);
                     win_p.setVisible(true);
                     setVisible(false);
+                    dispose();
                 }
                 try{
                     fachada.avanzarDia(sucesos);

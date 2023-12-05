@@ -104,6 +104,7 @@ public class pantalla_principal extends JFrame implements ActionListener{
 
             jug.setVisible(true);
             this.setVisible(false);
+            dispose();
         }
     }
     
