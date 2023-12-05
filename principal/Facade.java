@@ -146,8 +146,6 @@ public class Facade {
                     //si tiene un arma se elige al azar si la cambia o no
                     if (tributo.getArma()!=null){
                         if(random.nextInt(2)==1){
-                            System.out.println(tributo.getNombre()+ " ha decidido cambiar " +tributo.getArma().toString()+ " por " +armas.get(rand3).toString());
-                            tributo.setArma(armas.get(rand3));
                             l.setText(l.getText() + tributo.getNombre()+ " ha decidido cambiar " +tributo.getArma().toString()+ " por " +armas.get(rand3).toString() + "\n");
                             tributo.setArma(armas.get(rand3));
                         }
@@ -163,7 +161,6 @@ public class Facade {
                     }
                     break;
                 case 4:
-                    System.out.print(tributo.getNombre() +" ha encontrado una pocion de ");
                     l.setText(l.getText() + tributo.getNombre() +" ha encontrado una pocion de ");
                     int rand4=random.nextInt(4)+1;
                     switch (rand4) {

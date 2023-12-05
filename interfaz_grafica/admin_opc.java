@@ -18,7 +18,7 @@ public class admin_opc extends JFrame{
         this.fachada = fachada;
         setTitle("Opciones Del ADMINISTRADOR");
         setLayout(null);
-        setBounds(0,0,200,100);
+        setBounds(0,0,200,150);
         setVisible(true);
         setLocationRelativeTo(null);
         setComponents();
@@ -39,6 +39,12 @@ public class admin_opc extends JFrame{
         });
         add(cv);
 
+        ImageIcon img_1 = new ImageIcon("Recursos/lv.jpeg");
+        JLabel etiq_img_1 = new JLabel(img_1);
+        etiq_img_1.setBounds(0,50,50,50);
+        add(etiq_img_1);
+        
+
         JButton ev = new JButton("2");
         ev.setBounds(50,0,50,50);
         ev.addActionListener(new ActionListener() {
@@ -54,6 +60,11 @@ public class admin_opc extends JFrame{
             }
         });
         add(ev);
+
+        ImageIcon img_2 = new ImageIcon("Recursos/dd.jpeg");
+        JLabel etiq_img_2 = new JLabel(img_2);
+        etiq_img_2.setBounds(50,50,50,50);
+        add(etiq_img_2);
 
         JButton ae = new JButton("3");
         ae.setBounds(100,0,50,50);
@@ -72,5 +83,9 @@ public class admin_opc extends JFrame{
         });
         add(ae);
         
+        ImageIcon img_3 = new ImageIcon("Recursos/es.jpeg");
+        JLabel etiq_img_3 = new JLabel(img_3);
+        etiq_img_3.setBounds(100,50,50,50);
+        add(etiq_img_3);
     }
 }
