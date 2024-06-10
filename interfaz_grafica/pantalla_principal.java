@@ -21,16 +21,10 @@ public class pantalla_principal extends JFrame implements ActionListener{
         setTitle("Juegos del hambre");
         setBounds(0,0,640,360);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
-    
         setVisible(false);
         setLocationRelativeTo(null);
         setLayout(null);
         set_components();
-        
-
-
-        
     }
     private Font cargar_Font(String path){
         Font custom_Font = null;
@@ -57,7 +51,6 @@ public class pantalla_principal extends JFrame implements ActionListener{
         titulo.setBounds(160,0,300,50);
         titulo.setFont(font);
         titulo.setForeground(Color.WHITE);
-
         add(titulo);
 
         font.deriveFont(Font.PLAIN, 12);
